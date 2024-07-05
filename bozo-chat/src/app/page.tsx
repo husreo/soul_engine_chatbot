@@ -37,7 +37,9 @@ export default function Home() {
     }
     setMessages([]);
     (async () => {
-      const soul = await setupSoulBridge(12345);
+      console.log("call here!");
+      
+      const soul = await setupSoulBridge();
       soul.dispatch({
         action: "said",
         content: "Hello",
@@ -50,14 +52,8 @@ export default function Home() {
     router.push(`#${messages.length-1}`);
 
   }, [messages])
-  async function setupSoulBridge(soulId: number) {
-    
-    if (souls[soulId]) {
-      return souls[soulId];
-    }
-    
+  async function setupSoulBridge() {
     const soul = new Soul({
-      soulId: String(soulId),
       organization: process.env.NEXT_PUBLIC_OPENSOULS_ORG!,
       blueprint: process.env.NEXT_PUBLIC_OPENSOULS_BLUEPRINT!,
     });
@@ -97,10 +93,6 @@ export default function Home() {
     });
     
     await soul.connect();
-    
-    console.log(`Connected to ${String(soulId)}`)
-    souls[soulId] = soul;
-
     return soul;
   }
   function sendMeme(url: string) {

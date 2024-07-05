@@ -21,7 +21,7 @@ export default function Chatbox(props: {content: String, state: Number, urlname:
         </p> 
       </div>
       {props.urlname !== ''?<div className={`w-full ${props.state?"hidden": ""}` }>
-        <a className="p-1 mt-1 text-[12px] md:text-[14px] text-[#8226BF] border-[#8226BF] border-2 rounded-2xl float-left flex gap-1" href={props.urlcontent}>{props.urlname} 
+        <a className="p-1 mt-1 text-[12px] md:text-[14px] text-[#8226BF] border-[#8226BF] border-2 rounded-2xl float-left flex gap-1" href={props.urlcontent} target="_blank">{props.urlname} 
           <img src="/img/linkbtn.svg" alt="" />
         </a>
       </div>:""}
