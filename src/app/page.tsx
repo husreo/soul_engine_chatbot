@@ -20,6 +20,7 @@ export type ChatMessage =
 export default function Home() {
 
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [message, setMessage] = useState<string>("");
   const [showMeme, setMeme] = useState(false);
   const [imgurl, setimgUrl] = useState<string[]>([]);
   const [isThinking, setIsThinking] = useState(false);
@@ -272,6 +273,8 @@ export default function Home() {
           <div className="flex justify-between items-center">
             < TextareaAutosize
               name="bozouser"
+              value={message}
+              onChange={(e) => setMessage(e.currentTarget.value)}
               className="h-[22px] w-5/6 focus:outline-none"
               maxRows={4}
               onKeyDown={(e) => {
@@ -283,7 +286,7 @@ export default function Home() {
               }}
               autoFocus />
             <div className="flex items-center gap-2">
-              <button className="w-[50px] h-[40px] text-white bg-[#8226BF] text-xs rounded-sm">SEND</button>
+              <button className="w-[50px] h-[40px] text-white bg-[#8226BF] text-xs rounded-sm" onClick={() => connectToSoulEngine(12345, message!)}>SEND</button>
               <img src="/img/memo.png" className="h-[30px] cursor-pointer" alt="" onClick={() => setMeme(!showMeme)} />
             </div>
           </div>
