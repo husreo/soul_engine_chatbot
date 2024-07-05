@@ -7,7 +7,7 @@ import { getMetadataFromPerception, getUserDataFromDiscordEvent } from "./lib/ut
 const core: MentalProcess = async ({ workingMemory }) => {
   const { speak, log, dispatch } = useActions();
   const { invokingPerception, pendingPerceptions } = usePerceptions();
-  const { userName, discordEvent } = getMetadataFromPerception(invokingPerception);
+  // const { userName, discordEvent } = getMetadataFromPerception(invokingPerception);
   const lastProcess = useSoulMemory("lastProcess", "core");
   const newUserAction = useSoulMemory<string>("newUserAction", "...");
   const { invocationCount } = useProcessManager()
@@ -53,10 +53,10 @@ const core: MentalProcess = async ({ workingMemory }) => {
   dispatch({
     action: "says",
     content: dialog,
-    _metadata: {
-      discordEvent,
+    // _metadata: {
+    //   discordEvent,
         
-    },
+    // },
   });
 
   return masterMemory;

@@ -115,7 +115,7 @@ const cleanedQuestionAnswers = Object.entries(uniqueAnswers).map(([answer, quest
   let newMemory = {
     role: ChatMessageRoleEnum.Assistant,
     content: indentNicely`
-        # Ordinals Knowledge Base 
+        # Ordinal Knowledge Base 
         IMPORTANT!!! : THE USER CANNOT SEE THIS INFORMATION. USE THIS TO ANSWER THEIR QUESTION
         IMPORTANT!!! : IF THERE ARE LINKS ASSOCIATED WITH THE ANSWER, ADD ALL LINKS
         

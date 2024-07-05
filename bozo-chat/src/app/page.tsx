@@ -224,8 +224,28 @@ export default function Home() {
                           <img className="w-[300px]" src={val.content} alt="" />
                         </div>
                         <div className="flex justify-end gap-1 md:gap-3 py-2 md:p-0 -z-50">
-                          <button className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]">That's pretty funny</button>
-                          <button className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#4c4253] text-[#8226BF] bg-[#E9D4F7]">nah, it's not funny at all</button>
+                          <button onClick={() => {
+                            setMessages((prev) => [
+                              ...prev,
+                              {
+                                state: 0,
+                                content: "Good feedback logged! Thanks! Enjoy meme 😁",
+                                urlcontent: '',
+                                urlname: ''
+                              }
+                            ])
+                          }} className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]">That's pretty funny</button>
+                          <button onClick={() => {
+                            setMessages((prev) => [
+                              ...prev,
+                              {
+                                state: 0,
+                                content: "Bad feedback logged! Sorry about that! 😥",
+                                urlcontent: '',
+                                urlname: ''
+                              }
+                            ])
+                          }} className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#4c4253] text-[#8226BF] bg-[#E9D4F7]">nah, it's not funny at all</button>
                         </div>
                       </div>
                       :<Chatbox state={val.state} content = {val.content} urlname = {val.urlname} urlcontent = {val.urlcontent}/>}
