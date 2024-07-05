@@ -200,7 +200,7 @@ export default function Home() {
               </div>
             </div>
             <div className="w-1/3 md:w-full">
-              <Image src="/img/bozo.svg" width={20} height={20} className="w-full" alt="" />
+              <Image src="/img/graybozo.svg" width={20} height={20} className="w-full" alt="" />
               
               <div className="flex justify-between mt-2">
                 <p className="text-[#8226BF]">You</p>
@@ -234,7 +234,7 @@ export default function Home() {
                                 urlname: ''
                               }
                             ])
-                          }} className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]">That's pretty funny</button>
+                          }} className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]">That's pretty funny</button>
                           <button onClick={() => {
                             setMessages((prev) => [
                               ...prev,
@@ -245,7 +245,7 @@ export default function Home() {
                                 urlname: ''
                               }
                             ])
-                          }} className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#4c4253] text-[#8226BF] bg-[#E9D4F7]">nah, it's not funny at all</button>
+                          }} className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#4c4253] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]">nah, it's not funny at all</button>
                         </div>
                       </div>
                       :<Chatbox state={val.state} content = {val.content} urlname = {val.urlname} urlcontent = {val.urlcontent}/>}
@@ -262,10 +262,10 @@ export default function Home() {
                     </div> : ""
                     }
                     {index === 0? <div className="w-full h-[40px]">
-                      <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]" onClick={() => connectToSoulEngine(12345, "What's $bozo")}>What's $bozo</button>
-                      <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[rgb(130,38,191)] bg-[#E9D4F7]" onClick={() => connectToSoulEngine(12345, "Who are you")}>Who are you</button>
-                      <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]" onClick={() => connectToSoulEngine(12345, "Where to start")}>Where to start</button>
-                      <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]" onClick={() => connectToSoulEngine(12345, "Why invest in bozo")}>Why invest in bozo</button>
+                      <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "What's $bozo")}>What's $bozo</button>
+                      <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[rgb(130,38,191)] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "Who are you")}>Who are you</button>
+                      <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "Where to start")}>Where to start</button>
+                      <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "Why invest in bozo")}>Why invest in bozo</button>
                     </div>:""}
                   </div>
                   )
