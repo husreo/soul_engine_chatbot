@@ -241,7 +241,7 @@ export default function Home() {
                       </p> 
                     </div> : ""
                     }
-                    {index === 0? <div className="w-full">
+                    {index === 0? <div className="w-full h-[40px]">
                       <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]" onClick={() => connectToSoulEngine(12345, "What's $bozo")}>What's $bozo</button>
                       <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[rgb(130,38,191)] bg-[#E9D4F7]" onClick={() => connectToSoulEngine(12345, "Who are you")}>Who are you</button>
                       <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]" onClick={() => connectToSoulEngine(12345, "Where to start")}>Where to start</button>
