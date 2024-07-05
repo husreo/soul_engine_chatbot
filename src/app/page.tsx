@@ -209,7 +209,7 @@ export default function Home() {
           <SimpleBar forceVisible="x" autoHide={true} className="w-full h-full p-4 md:p-6">
 
             {
-              messages.map((val, index) => <div className="w-full py-3">
+              messages.map((val, index) => <div className={`w-full py-3 ${index === 1? `hidden`: ``}`}>
 
                 <div className={`flex w-full gap-1 md:gap-3 py-2 md:p-0 ${val.state === 1 || val.state === 2 ? `justify-end` : ``}`} key={index} id={index.toString()}>
                   {val.state === 0 || val.state === 3 ? <div className="text-[#8226BF]">Bozo</div> : ''}
