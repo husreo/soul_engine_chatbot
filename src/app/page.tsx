@@ -250,10 +250,9 @@ export default function Home() {
                   </div> : ""
                 }
                 {index === 0 ? <div className="w-full h-[40px]">
-                  <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "What's $bozo")}>What's $bozo</button>
-                  <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[rgb(130,38,191)] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "Who are you")}>Who are you</button>
-                  <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "Where to start")}>Where to start</button>
-                  <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "Why invest in bozo")}>Why invest in bozo</button>
+                  <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "What's $bozo")}>How to buy $bozo</button>
+                  <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[rgb(130,38,191)] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "Tell me a random fact about yourself")}>Tell me a random fact about yourself</button>
+                  <button className="float-right ml-1 px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]" onClick={() => connectToSoulEngine(12345, "Who are you?")}>Who are you?</button>
                 </div> : ""}
               </div>
               )
