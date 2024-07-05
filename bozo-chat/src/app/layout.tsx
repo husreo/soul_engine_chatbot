@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useEffect } from "react";
 import "./globals.css";
 import { Header } from "./components/header";
@@ -15,8 +16,11 @@ export default function RootLayout({
   }, []);
   return (
     <html lang="en">
-      <Header/>
-      <body>{isClient ? <>{children}</> : null}</body>
+      {isClient?<>
+        <Header/>
+        <body>{children}</body>
+      </>:null}
     </html>
+
   );
 }
