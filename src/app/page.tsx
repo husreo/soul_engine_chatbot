@@ -10,12 +10,15 @@ import { useOnMount } from "@/lib/hooks/use-on-mount";
 import { Header } from "./components/header";
 import { useRouter } from "next/navigation";
 import Upload from "./components/upload";
+export type UrlType = {
+  text: string;
+  url: string;
+}
 export type ChatMessage =
   {
     state: number;
     content: string;
-    urlname: string;
-    urlcontent: string;
+    urls: UrlType[];
   }
 export default function Home() {
 
@@ -64,30 +67,25 @@ export default function Home() {
       if (content.length > 4096) {
         content = content.substring(0, 4093) + '...';
       }
+      console.log("result:", content);
+      
       setIsThinking(false);
-      let phrase = "";
-      let url = "";
+      let getUrls:UrlType[];
       if (content.includes("http")) {
-        const regex = /\[(.*?)\]\((https?:\/\/\S+)\)/;
-        const match = content.match(regex);
-
-        if (match) {
-          phrase = match[1];
-          url = match[2];
-
-          content = content.replace(match[0], "");
-
-        } else {
-          console.log("No match found.");
-        }
+        const urlRegex = /\[(.*?)\]\((.*?)\)/g;
+        const matches = content.matchAll(urlRegex);
+        getUrls = Array.from(matches, (match) => ({
+          text: match[1],
+          url: match[2]
+        }));
+        content = content.replace(urlRegex, '');
       }
       setMessages((prev) => [
         ...prev,
         {
           state: 0,
           content,
-          urlname: phrase,
-          urlcontent: url
+          urls: getUrls,
         },
       ]);
 
@@ -102,8 +100,7 @@ export default function Home() {
       {
         state: 2,
         content: url,
-        urlname: '',
-        urlcontent: ''
+        urls: [],
       },
     ]);
   }
@@ -116,8 +113,7 @@ export default function Home() {
         {
           state: 3,
           content: imgurl[randomNumber],
-          urlname: '',
-          urlcontent: ''
+          urls: [],
         },
       ]);
       return
@@ -152,8 +148,7 @@ export default function Home() {
       {
         state: 1,
         content: msg,
-        urlname: '',
-        urlcontent: ''
+        urls: [],
       },
     ]);
     lastUserMessages[soulId] = msg; // Store the last message sent by the user
@@ -224,8 +219,7 @@ export default function Home() {
                           {
                             state: 0,
                             content: "Good feedback logged! Thanks! Enjoy meme 😁",
-                            urlcontent: '',
-                            urlname: ''
+                            urls: [],
                           }
                         ])
                       }} className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]">That's pretty funny</button>
@@ -235,14 +229,13 @@ export default function Home() {
                           {
                             state: 0,
                             content: "Bad feedback logged! Sorry about that! 😥",
-                            urlcontent: '',
-                            urlname: ''
+                            urls: [],
                           }
                         ])
                       }} className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#4c4253] text-[#8226BF] bg-[#E9D4F7] hover:bg-[#efdffa]">nah, it's not funny at all</button>
                     </div>
                   </div>
-                    : <Chatbox state={val.state} content={val.content} urlname={val.urlname} urlcontent={val.urlcontent} />}
+                    : <Chatbox state={val.state} content={val.content} urls={val.urls} />}
                   {val.state === 1 || val.state === 2 ? <div className="text-[#8226BF]">You</div> : ''}
                 </div>
                 {index === messages.length - 1 && isThinking ?

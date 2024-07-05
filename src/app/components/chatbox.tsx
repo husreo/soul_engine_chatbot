@@ -2,11 +2,11 @@
 import { useState } from "react";
 export type UrlType =
   {
-    name: string;
-    content: string;
+    text: string;
+    url: string;
   }
 
-export default function Chatbox(props: {content: String, state: Number, urlname: string, urlcontent: string}) {
+export default function Chatbox(props: {content: String, state: Number, urls: UrlType[]}) {
   
     const currentTimeString = getCurrentTimeString();
 
@@ -20,11 +20,12 @@ export default function Chatbox(props: {content: String, state: Number, urlname:
           {props.content}
         </p> 
       </div>
-      {props.urlname !== ''?<div className={`w-full ${props.state?"hidden": ""}` }>
-        <a className="p-1 mt-1 ml-3 text-[12px] md:text-[14px] text-[#8226BF] border-[#8226BF] border-2 rounded-2xl float-left flex gap-1" href={props.urlcontent} target="_blank">{props.urlname} 
+      {props?.urls?.map((val, index) => <div className={`w-full ${props.state?"hidden": ""}` }>
+        <a className="p-1 mt-1 ml-3 text-[12px] md:text-[14px] text-[#8226BF] border-[#8226BF] border-2 rounded-2xl float-left flex gap-1" href={val.url} target="_blank">{val.text} 
           <img src="/img/linkbtn.svg" alt="" />
         </a>
-      </div>:""}
+      </div>)}
+      
       <div className="w-full ml-3">
         <p className="text-[12px] text-[#7D7D7D]">Read {currentTimeString}</p>
       </div>
