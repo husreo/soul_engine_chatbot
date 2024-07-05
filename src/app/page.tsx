@@ -105,6 +105,7 @@ export default function Home() {
     ]);
   }
   async function connectToSoulEngine(soulId: number, msg: string) {
+    setMessage('');
     console.log("here", msg);
     if (msg === "/meme") {
       const randomNumber = Math.floor(Math.random() * 102) + 1;
@@ -270,8 +271,8 @@ export default function Home() {
               className="h-[22px] w-5/6 focus:outline-none"
               maxRows={4}
               onKeyDown={(e) => {
-
                 if (e.key === "Enter" && !e.shiftKey) {
+                  setMessage('');
                   e.preventDefault();
                   connectToSoulEngine(12345, e.currentTarget.value);
                 }
