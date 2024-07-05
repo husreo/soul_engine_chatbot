@@ -5,13 +5,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 import Chatbox from "./components/chatbox";
 import SimpleBar from 'simplebar-react';
 import { Soul, said } from "@opensouls/engine";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useOnMount } from "@/lib/hooks/use-on-mount";
-
-type msgType = {
-  content: String,
-  state: Number
-}
 
 export type ChatMessage =
   {
@@ -19,9 +14,18 @@ export type ChatMessage =
     content: string;
   }
 export default function Home() {
-  const [message, setMessage] = useState("");
+  useEffect(() => {
+    (async () => {
+      const soul = await setupSoulBridge(12345); 
+
+      soul.dispatch({
+        action: "said",
+        content: "Hello",
+      });
+    })()
+
+  }, [])
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [usermsg, setUsermsg] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const souls: Record<string, Soul> = {};
   const lastMessageTimestamps: Record<number, number> = {};
@@ -33,7 +37,6 @@ export default function Home() {
     if (souls[soulId]) {
       return souls[soulId];
     }
-    console.log("blueprint ==>>>", process.env.NEXT_PUBLIC_OPENSOULS_BLUEPRINT);
     
     const soul = new Soul({
       soulId: String(soulId),
@@ -41,15 +44,22 @@ export default function Home() {
       blueprint: process.env.NEXT_PUBLIC_OPENSOULS_BLUEPRINT!,
     });
 
-
     soul.on("says", async (event) => {
       let content = await event.content();
       if (content.length > 4096) {
         content = content.substring(0, 4093) + '...';
       }
       console.log("result ===>>>", content);
-      
-      setMessage(content);
+      if (!messages.map((val) => val.content).includes(content)) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            state: 0,
+            content,
+          },
+        ]);
+      }
+      // setMessage(content);
       lastBotMessages[soulId] = content; // Store the last message sent by the bot
     });
     
@@ -64,8 +74,6 @@ export default function Home() {
   async function connectToSoulEngine(soulId: number, msg: string) {
       console.log("here", msg);
       
-      setUsermsg(msg);
-      // const telegramChatId = ctx.message.chat.id;
       const currentTimestamp = Date.now();
   
       if (lastMessageTimestamps[soulId]) {
@@ -93,6 +101,13 @@ export default function Home() {
       //   await sendLogToChat(telegram, logMessage);
       //   await logFeedback(messageText, telegramChatId, "bad", lastUserMessages[telegramChatId], lastBotMessages[telegramChatId]);
       // } else {
+      setMessages((prev) => [
+        ...prev,
+        {
+          state: 1,
+          content: msg,
+        },
+      ]);
       lastUserMessages[soulId] = msg; // Store the last message sent by the user
       soul.dispatch({
         action: "said",
@@ -137,14 +152,23 @@ export default function Home() {
         <div className="w-full md:w-5/6 h-full flex flex-col justify-between gap-4 ">
           <div className="border-2 border-[#8226BF] h-5/6 rounded-md">
             <SimpleBar forceVisible="x" autoHide={true} className="w-full h-full p-4 md:p-6">
-              <div className="flex gap-1 md:gap-3 py-2 md:p-0">
+              {/* <div className="flex gap-1 md:gap-3 py-2 md:p-0">
                 <div className="text-[#8226BF]">Bozo</div>
                 <Chatbox state={0} chatContent = {message}/>
               </div>
               <div className="flex justify-end gap-1 md:gap-3 py-2 md:p-0">
                 <Chatbox state={1} chatContent = {usermsg}/>
                 <div className="text-[#8226BF]">You</div>
-              </div>
+              </div> */}
+              {
+                messages.map((val, index) => <div className={`flex gap-1 md:gap-3 py-2 md:p-0 ${val.state?`justify-end`:``}`}>
+                  {val.state === 0?<div className="text-[#8226BF]">Bozo</div>:''}
+
+                  <Chatbox state={val.state} chatContent = {val.content}/>
+                  {val.state?<div className="text-[#8226BF]">You</div>:''}
+
+                </div>)
+              }
               <div className="flex gap-1 md:gap-3 py-2 md:p-0 -z-50">
                 <img src="/img/meme.png" alt="" />
               </div>
@@ -165,7 +189,6 @@ export default function Home() {
                 
                 if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault();
-                  
                   connectToSoulEngine(12345, e.currentTarget.value);
                 }
               }}
