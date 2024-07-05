@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: "Bubblegum Sans", sans-serif;
+}
+
+*:focus {
+    outline: none;
+}
