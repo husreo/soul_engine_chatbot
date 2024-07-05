@@ -52,7 +52,6 @@ export default function Home() {
   }, [])
   useEffect(() => {
     router.push(`#${messages.length - 1}`);
-
   }, [messages])
   async function setupSoulBridge() {
     const soul = new Soul({
@@ -202,9 +201,9 @@ export default function Home() {
       </div>
 
       <div className="w-full sm:w-4/5 max-h-[100vh] flex flex-col justify-between gap-4 ">
-        <div className="border-2 border-[#8226BF] h-[80vh] rounded-md cursor-all-scroll " id="scroll" 
+        <div className="border-2 border-[#8226BF] h-[70vh] rounded-md " id="scroll" 
         style={{
-          maxHeight: `calc(80vh - ${showMeme ? '120px' : '0px'})`
+          maxHeight: `calc(70vh - ${showMeme ? '120px' : '0px'})`
         }}>
           <SimpleBar forceVisible="x" autoHide={true} className="w-full h-full p-4 md:p-6">
 
@@ -269,7 +268,7 @@ export default function Home() {
           </SimpleBar>
         </div>
 
-        <div className="border-2 border-[#8226BF] max-h-[40vh]  rounded-md p-[24px] cursor-all-scroll">
+        <div className="border-2 border-[#8226BF] max-h-[40vh]  rounded-md p-[24px]">
           <div className="flex justify-between items-center">
             < TextareaAutosize
               name="bozouser"
