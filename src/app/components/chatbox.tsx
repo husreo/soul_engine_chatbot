@@ -16,7 +16,7 @@ export default function Chatbox(props: {content: String, state: Number, urlname:
         <div className="absolute inset-0">
           <img src="/img/chatbox.png" className={`w-full h-full ${props.state ===1 || props.state ===2?"flip": ""}`} />
         </div>
-        <p className="text-[14px] md:text-[16px] pl-4 relative bg-transparent break-words overflow-wrap break-word">
+        <p className={`text-[14px] md:text-[16px] ${props.state === 0? `pl-4`:``} relative bg-transparent break-words overflow-wrap break-word`}>
           {props.content}
         </p> 
       </div>

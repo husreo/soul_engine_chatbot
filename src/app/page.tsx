@@ -202,9 +202,9 @@ export default function Home() {
       </div>
 
       <div className="w-full sm:w-4/5 max-h-[100vh] flex flex-col justify-between gap-4 ">
-        <div className="border-2 border-[#8226BF] h-[60vh] rounded-md cursor-all-scroll " id="scroll" 
+        <div className="border-2 border-[#8226BF] h-[80vh] rounded-md cursor-all-scroll " id="scroll" 
         style={{
-          maxHeight: `calc(60vh - ${showMeme ? '120px' : '0px'})`
+          maxHeight: `calc(80vh - ${showMeme ? '120px' : '0px'})`
         }}>
           <SimpleBar forceVisible="x" autoHide={true} className="w-full h-full p-4 md:p-6">
 
