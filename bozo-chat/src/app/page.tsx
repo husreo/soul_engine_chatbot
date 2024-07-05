@@ -219,9 +219,9 @@ export default function Home() {
                     <div className={`flex w-full gap-1 md:gap-3 py-2 md:p-0 ${val.state ===1 || val.state === 2?`justify-end`:``}`} key = {index} id={index.toString()}>
                       {val.state === 0 || val.state === 3?<div className="text-[#8226BF]">Bozo</div>:''}
 
-                      {val.state ===2?<img src = {val.content} className="w-[100px]"></img>: val.state ===3? <div className="w-full">
+                      {val.state ===2?<img src = {val.content} className="w-[300px]"></img>: val.state ===3? <div className="w-full">
                         <div className="flex gap-1 md:gap-3 py-2 md:p-0 -z-50">
-                          <img className="w-[200px]" src={val.content} alt="" />
+                          <img className="w-[300px]" src={val.content} alt="" />
                         </div>
                         <div className="flex justify-end gap-1 md:gap-3 py-2 md:p-0 -z-50">
                           <button className="px-3 text-[14px] md:text-[16px] py-2 rounded-md border-2 border-[#8226BF] text-[#8226BF] bg-[#E9D4F7]">That's pretty funny</button>
