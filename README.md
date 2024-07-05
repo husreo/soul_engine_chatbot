@@ -1,33 +1,36 @@
-# THE ORDINALS CHADBOT V2
-BACK AND BETTER THAN EVER MFERS
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-[CHAT ON TELEGRAM](https://t.me/ordinalschad_bot)
-*Send him a message to get started*
+## Getting Started
 
-[INVITE TO YOUR DISCORD](https://discord.com/oauth2/authorize?client_id=1133344551822688396)
-*Ping him and ask your question in the same message!* "@Ordinals Chadbot what is RBF?"
+First, run the development server:
 
-![chadbotposter](https://github.com/kingbootoshi/chadbot-v2/assets/127834715/dc6f6cca-6d05-4c71-865b-9c67f38d888a)
-
-# TO ADD INFORMATION TO THE CHADBOT DB
-Navigate to the "backgroundInformation" folder and add markdown files ".md" to the folder.
-For people who don't use github, please add information to the google form [here](https://forms.gle/5XAFWu7AHsrtdEA98)
-
-IMPORTANT: DO NOT ADD SYMBOLS IN THE MD! Please organize commits in the following format
-```
-question(s) related to the information
-answer
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Example:
-```
-WHAT ARE RUNES?
-Runes are a scam created by a furry
-```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-**DO NOT ADD SYMBOLS, KEEP THE TEXT PLAIN**
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-# RUNNING YOUR OWN Q&A BOT AND UPDATING THE DATABASE
-To update the database and push the files in backgroundInformation into the soul server, run
-```npm run pipeline```
-## Powered by [Open Souls](https://twitter.com/OpenSoulsPBC)
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

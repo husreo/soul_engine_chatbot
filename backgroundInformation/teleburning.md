@@ -1,2 +1,0 @@
-What is Teleburning?
-Casey Rodarmor came up with the concept of Teleburn as a troll on ETH & a logically sound & simple way to permanently move assets from ETH to BTC. "Burn w/ immutable pointer to inscription or ordinal" More: https://twitter.com/TO/status/1667658012960464897?s=20
